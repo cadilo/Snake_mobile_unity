@@ -19,11 +19,6 @@ public class Food : MonoBehaviour
 
             if ((Snake.Snake_tail[i].position.x == x) && (Snake.Snake_tail[i].position.y == y))
             {   
-                Debug.Log(Snake.Snake_tail[i].position.x);
-                Debug.Log(Snake.Snake_tail[i].position.y);
-                Debug.Log(x);
-                Debug.Log(y);
-                Debug.Log("yes");
                 return true;
             }
                      
@@ -37,7 +32,7 @@ public class Food : MonoBehaviour
         Bounds bounds = this.SpawnArea.bounds;
         int x, y;
 
-        // Генерируем переменные позиции еды, проверяя не находятся ли они на хвосте
+        // ГѓГҐГ­ГҐГ°ГЁГ°ГіГҐГ¬ ГЇГҐГ°ГҐГ¬ГҐГ­Г­Г»ГҐ ГЇГ®Г§ГЁГ¶ГЁГЁ ГҐГ¤Г», ГЇГ°Г®ГўГҐГ°ГїГї Г­ГҐ Г­Г ГµГ®Г¤ГїГІГ±Гї Г«ГЁ Г®Г­ГЁ Г­Г  ГµГўГ®Г±ГІГҐ
         do
         {
             x = (int)Random.Range(bounds.min.x, bounds.max.x);
