@@ -55,14 +55,9 @@ public class Snake : MonoBehaviour
     private void Update()
     {
         //====================================== Управление клавиатурой
-        if (Input.GetKey(KeyCode.D))
-        {
-            Debug.Log("right");
-        }
 
         if(Input.GetKey(KeyCode.W)) 
         {
-            Debug.Log("up");
             direction = Vector2.up;
         }
         else if (Input.GetKey(KeyCode.S))
