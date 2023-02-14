@@ -12,12 +12,17 @@ public class Food : MonoBehaviour
         RandomPosiyion();
     }
 
-    private bool IsFoodOnTail(float x, float y)
+    private bool IsFoodOnTail(int x, int y)
     {
         for (int i = Snake.Snake_tail.Count - 1; i > 0; i--)
         {
+
             if ((Snake.Snake_tail[i].position.x == x) && (Snake.Snake_tail[i].position.y == y))
-                return true;     
+            {   
+                return true;
+            }
+                     
+
         }
         return false;
     }
@@ -25,17 +30,34 @@ public class Food : MonoBehaviour
     private void RandomPosiyion()
     {
         Bounds bounds = this.SpawnArea.bounds;
-        float x, y;
+        int x, y;
 
-        // Генерируем переменные позиции еды, проверяя не находятся ли они на хвосте
+        // ГѓГҐГ­ГҐГ°ГЁГ°ГіГҐГ¬ ГЇГҐГ°ГҐГ¬ГҐГ­Г­Г»ГҐ ГЇГ®Г§ГЁГ¶ГЁГЁ ГҐГ¤Г», ГЇГ°Г®ГўГҐГ°ГїГї Г­ГҐ Г­Г ГµГ®Г¤ГїГІГ±Гї Г«ГЁ Г®Г­ГЁ Г­Г  ГµГўГ®Г±ГІГҐ
         do
         {
-           x = Random.Range(bounds.min.x, bounds.max.x);
-           y = Random.Range(bounds.min.y, bounds.max.y);
+            x = (int)Random.Range(bounds.min.x, bounds.max.x);
+            y = (int)Random.Range(bounds.min.y, bounds.max.y);
         }
         while (IsFoodOnTail(x, y));
+        this.transform.position = new Vector3(Mathf.Round(x), Mathf.Round(y), 0f);
 
-            this.transform.position = new Vector3(Mathf.Round(x), Mathf.Round(y), 0f);
+        //x = (int)Random.Range(bounds.min.x, bounds.max.x);
+        //y = (int)Random.Range(bounds.min.y, bounds.max.y);
+
+        //if (IsFoodOnTail(x, y))
+        //{
+
+        //    x = (int)Random.Range(bounds.min.x, bounds.max.x);
+        //    y = (int)Random.Range(bounds.min.y, bounds.max.y);
+        //    this.transform.position = new Vector3(Mathf.Round(x), Mathf.Round(y), 0f);
+        //}
+        //else
+        //{
+
+        //    this.transform.position = new Vector3(Mathf.Round(x), Mathf.Round(y), 0f);
+        //}
+
+
     }
 
     private void OnTriggerEnter2D(Collider2D other)
