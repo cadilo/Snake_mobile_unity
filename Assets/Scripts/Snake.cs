@@ -19,6 +19,9 @@ public class Snake : MonoBehaviour
 
     [SerializeField] Text BestScoreText;
     private int BestScore = 0;
+
+    public AudioSource sound;
+    public AudioClip gameov;
     //================================================
 
     //================================= Кнопки
@@ -30,6 +33,7 @@ public class Snake : MonoBehaviour
     [SerializeField] GameObject Start_btn;
     [SerializeField] GameObject Exit_btn;
     [SerializeField] GameObject Swipe_Panel;
+    [SerializeField] GameObject bgmusic;
     //==========================================
 
     private void Start()
@@ -41,6 +45,7 @@ public class Snake : MonoBehaviour
         Start_btn.SetActive(true);
         Exit_btn.SetActive(true);
 
+        bgmusic.SetActive(false);
 
         if (PlayerPrefs.HasKey("snakeScore"))
         {
@@ -97,6 +102,7 @@ public class Snake : MonoBehaviour
         Time.timeScale = 1;
         Start_btn.SetActive(false);
         Exit_btn.SetActive(false);
+        bgmusic.SetActive(true);
         Swipe_Panel.SetActive(true);
         CheckScore();
     }
@@ -129,6 +135,7 @@ public class Snake : MonoBehaviour
     private void GameOver()
     {
         //Debug.Log("gameover");
+
         for(int i = 1; i < Snake_tail.Count; i++)
         {
             Destroy(Snake_tail[i].gameObject);
@@ -150,6 +157,8 @@ public class Snake : MonoBehaviour
         Start_btn.SetActive(true);
         Exit_btn.SetActive(true);
         Swipe_Panel.SetActive(false);
+        bgmusic.SetActive(false);
+        sound.PlayOneShot(gameov);
     }
 
     //Обработка коллизий
