@@ -9,7 +9,7 @@ public class Snake : MonoBehaviour
     public static Vector2 direction = Vector2.up;
 
     //=================================Список со змейкой
-    private List<Transform> Snake_tail;
+    public static List<Transform> Snake_tail;
     //==================================================
 
     [SerializeField] Transform snake_tail_prefab;
