@@ -1,4 +1,4 @@
-
+using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -41,11 +41,19 @@ public class Snake : MonoBehaviour
         Snake_tail = new List<Transform>(); 
         Snake_tail.Add(this.transform);
 
-        Time.timeScale = 0;
-        Start_btn.SetActive(true);
-        Exit_btn.SetActive(true);
+        if(SceneManager.GetActiveScene().name == "MultiPlayerGame")
+        {
+            bgmusic.SetActive(false);
+            Swipe_Panel.SetActive(true);
+        }
+        else
+        {
+            Time.timeScale = 0;
+            Start_btn.SetActive(true);
+            Exit_btn.SetActive(true);
+            bgmusic.SetActive(false);
+        }
 
-        bgmusic.SetActive(false);
 
         if (PlayerPrefs.HasKey("snakeScore"))
         {
