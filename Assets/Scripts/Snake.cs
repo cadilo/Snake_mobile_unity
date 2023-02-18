@@ -26,10 +26,6 @@ public class Snake : MonoBehaviour
     //================================================
 
     //================================= Êíîïêè
-    //[SerializeField] Button btn_UP;
-    //[SerializeField] Button btn_DOWN;
-    //[SerializeField] Button btn_LEFT;
-    //[SerializeField] Button btn_RIGHT;
 
     [SerializeField] GameObject Start_btn;
     [SerializeField] GameObject Exit_btn;
@@ -95,6 +91,9 @@ public class Snake : MonoBehaviour
         }
         //==============================================================
 
+
+
+
     }
 
     private void FixedUpdate()
@@ -105,7 +104,7 @@ public class Snake : MonoBehaviour
             {
                 for (int i = Snake_tail.Count - 1; i > 0; i--)
                 {
-                    Snake_tail[i].position = Snake_tail[i - 1].position;
+                    Snake_tail[i].transform.position = Snake_tail[i - 1].transform.position;
                 }
                 this.transform.position = new Vector3(Mathf.Round(this.transform.position.x) + direction.x, Mathf.Round(this.transform.position.y) + direction.y, 0f);
             }

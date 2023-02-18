@@ -24,4 +24,6 @@ public class ConnectToServer : MonoBehaviourPunCallbacks
     {
         SceneManager.LoadScene("MultiplayerMenu");
     }
+
+
 }
