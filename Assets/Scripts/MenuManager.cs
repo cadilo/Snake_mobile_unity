@@ -17,11 +17,13 @@ public class MenuManager : MonoBehaviourPunCallbacks
         RoomOptions roomOptions = new RoomOptions();
         roomOptions.MaxPlayers = 2;
         PhotonNetwork.CreateRoom(createInput.text, roomOptions);
+        PhotonNetwork.Instantiate("Snake", new Vector3(0, 0, 0), Quaternion.identity, 0);
     }
 
     public void JoinRoom()
     {
         PhotonNetwork.JoinRoom(joinInput.text);
+        PhotonNetwork.Instantiate("Snake", new Vector3(0, 0, 0), Quaternion.identity, 0);
     }
 
     public override void OnJoinedRoom()
