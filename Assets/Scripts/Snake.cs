@@ -41,15 +41,20 @@ public class Snake : MonoBehaviourPunCallbacks
     {
         
 
-        Snake_tail = new List<Transform>(); 
-        Snake_tail.Add(this.transform);
+
 
         if(SceneManager.GetActiveScene().name == "MultiPlayerGame")
         {
-            bgmusic.SetActive(false);
-            Swipe_Panel.SetActive(true);
-            flagmultiplayer = true;
-            view = GetComponent<PhotonView>();
+            if (view.IsMine)
+            {
+                bgmusic.SetActive(false);
+                Swipe_Panel.SetActive(true);
+                flagmultiplayer = true;
+                view = GetComponent<PhotonView>();
+
+                Snake_tail = new List<Transform>();
+                Snake_tail.Add(this.transform);
+            }
         }
         else
         {
@@ -58,6 +63,9 @@ public class Snake : MonoBehaviourPunCallbacks
             Start_btn.SetActive(true);
             Exit_btn.SetActive(true);
             bgmusic.SetActive(false);
+
+            Snake_tail = new List<Transform>();
+            Snake_tail.Add(this.transform);
         }
 
 
