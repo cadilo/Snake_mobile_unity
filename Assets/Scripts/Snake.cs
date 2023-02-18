@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
 
-public class Snake : MonoBehaviour
+public class Snake : MonoBehaviourPunCallbacks
 {
     PhotonView view;
     public static Vector2 direction = Vector2.up;
@@ -152,10 +152,23 @@ public class Snake : MonoBehaviour
 
     private void AddTail()
     {
-        Transform tail = Instantiate(this.snake_tail_prefab);
-        tail.position = Snake_tail[Snake_tail.Count-1].position;
+        if (flagmultiplayer)
+        {
+            if (view.IsMine)
+            {
+                Transform tail = Instantiate(this.snake_tail_prefab);
+                tail.position = Snake_tail[Snake_tail.Count - 1].position;
 
-        Snake_tail.Add(tail);
+                Snake_tail.Add(tail);
+            }
+        }
+        else
+        {
+            Transform tail = Instantiate(this.snake_tail_prefab);
+            tail.position = Snake_tail[Snake_tail.Count - 1].position;
+
+            Snake_tail.Add(tail);
+        }
     }
     
     private void GameOver()
@@ -190,13 +203,30 @@ public class Snake : MonoBehaviour
     //Обработка коллизий
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.tag == "food")
+        if (flagmultiplayer)
+        {
+            if (view.IsMine)
+            {
+                if (other.tag == "food")
+                {
+                    AddTail();
+                    score++;
+                    CheckScore();
+                }
+                else if (other.tag == "gameover")
+                {
+                    GameOver();
+                }
+            }
+        }
+
+        if (other.tag == "food")
         {
             AddTail();
             score++;
             CheckScore();
         }
-        else if(other.tag == "gameover")
+        else if (other.tag == "gameover")
         {
             GameOver();
         }

@@ -146,15 +146,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c127acc484019543b46fc63b79d81c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  left: 97
-  right: 100
-  up: 119
-  down: 115
-  size: 50
-  shift: 1
-  timeoutMove: 0.5
-  timeoutBonus: 5
-  _tail: {fileID: 7063306199572623259, guid: 91916634da45a4b408b2892dd901f887, type: 3}
-  _bonus: {fileID: 4151344063384971048, guid: 048cc399e11806e48911e4abc949f1f9, type: 3}
-  h: 0
-  v: 0
+  snake_tail_prefab: {fileID: 1985668872215457250, guid: 91916634da45a4b408b2892dd901f887, type: 3}
+  scoreText: {fileID: 0}
+  BestScoreText: {fileID: 0}
+  sound: {fileID: 0}
+  gameov: {fileID: 0}
+  Start_btn: {fileID: 0}
+  Exit_btn: {fileID: 0}
+  Swipe_Panel: {fileID: 0}
+  bgmusic: {fileID: 0}

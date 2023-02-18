@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 4574755353353807224}
   - component: {fileID: 4574755353353807225}
   - component: {fileID: 4574755353353807226}
-  - component: {fileID: 4574755353353807230}
   - component: {fileID: 1943292260168814096}
   - component: {fileID: -7046924034358293063}
+  - component: {fileID: 6069694900038624650}
   m_Layer: 0
   m_Name: Snake
   m_TagString: snake
@@ -136,27 +136,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.861435, y: 0.89696455}
   m_EdgeRadius: 0
---- !u!114 &4574755353353807230
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4574755353353807227}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c127acc484019543b46fc63b79d81c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  snake_tail_prefab: {fileID: 8664413910510686697, guid: ef6bb113a000e4b4fa6f33d02192b532, type: 3}
-  scoreText: {fileID: 0}
-  BestScoreText: {fileID: 0}
-  sound: {fileID: 0}
-  gameov: {fileID: 8300000, guid: db9d7fb8c4b276842856b0ed2f8d4469, type: 3}
-  Start_btn: {fileID: 0}
-  Exit_btn: {fileID: 0}
-  Swipe_Panel: {fileID: 0}
-  bgmusic: {fileID: 0}
 --- !u!114 &1943292260168814096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,3 +192,24 @@ MonoBehaviour:
     InterpolateOption: 0
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
+--- !u!114 &6069694900038624650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4574755353353807227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c127acc484019543b46fc63b79d81c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  snake_tail_prefab: {fileID: 1985668872215457250, guid: 91916634da45a4b408b2892dd901f887, type: 3}
+  scoreText: {fileID: 0}
+  BestScoreText: {fileID: 0}
+  sound: {fileID: 0}
+  gameov: {fileID: 0}
+  Start_btn: {fileID: 0}
+  Exit_btn: {fileID: 0}
+  Swipe_Panel: {fileID: 0}
+  bgmusic: {fileID: 0}
