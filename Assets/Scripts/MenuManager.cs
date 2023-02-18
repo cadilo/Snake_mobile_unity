@@ -4,11 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
 using Photon.Realtime;
+using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviourPunCallbacks
 {
     public InputField createInput;
     public InputField joinInput;
+    public Button exit_btn;
 
     public void CreateRoom()
     {
@@ -27,4 +29,9 @@ public class MenuManager : MonoBehaviourPunCallbacks
         PhotonNetwork.LoadLevel("MultiPlayerGame");
     }
 
+    public void exit_btn_()
+    {
+        PhotonNetwork.Disconnect();
+        SceneManager.LoadScene("MainMenu");
+    }
 }

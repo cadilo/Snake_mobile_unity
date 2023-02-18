@@ -2,12 +2,13 @@ using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using Photon.Pun;
 
 public class Snake : MonoBehaviour
 {
+    PhotonView view;
     public static Vector2 direction = Vector2.up;
-
+    private bool flagmultiplayer;
     //=================================Список со змейкой
     public static List<Transform> Snake_tail;
     //==================================================
@@ -38,6 +39,8 @@ public class Snake : MonoBehaviour
 
     private void Start()
     {
+        
+
         Snake_tail = new List<Transform>(); 
         Snake_tail.Add(this.transform);
 
@@ -45,9 +48,12 @@ public class Snake : MonoBehaviour
         {
             bgmusic.SetActive(false);
             Swipe_Panel.SetActive(true);
+            flagmultiplayer = true;
+            view = GetComponent<PhotonView>();
         }
         else
         {
+            flagmultiplayer = false;
             Time.timeScale = 0;
             Start_btn.SetActive(true);
             Exit_btn.SetActive(true);
@@ -67,6 +73,8 @@ public class Snake : MonoBehaviour
     }
     private void Update()
     {
+  
+
         //====================================== Управление клавиатурой
 
         if(Input.GetKey(KeyCode.W)) 
@@ -91,11 +99,25 @@ public class Snake : MonoBehaviour
 
     private void FixedUpdate()
     {
-        for (int i = Snake_tail.Count - 1; i > 0; i--)
+        if (flagmultiplayer)
         {
-            Snake_tail[i].position = Snake_tail[i - 1].position;
+            if (view.IsMine)
+            {
+                for (int i = Snake_tail.Count - 1; i > 0; i--)
+                {
+                    Snake_tail[i].position = Snake_tail[i - 1].position;
+                }
+                this.transform.position = new Vector3(Mathf.Round(this.transform.position.x) + direction.x, Mathf.Round(this.transform.position.y) + direction.y, 0f);
+            }
         }
-        this.transform.position = new Vector3(Mathf.Round(this.transform.position.x) + direction.x, Mathf.Round(this.transform.position.y) + direction.y, 0f);
+        else
+        {
+            for (int i = Snake_tail.Count - 1; i > 0; i--)
+            {
+                Snake_tail[i].position = Snake_tail[i - 1].position;
+            }
+            this.transform.position = new Vector3(Mathf.Round(this.transform.position.x) + direction.x, Mathf.Round(this.transform.position.y) + direction.y, 0f);
+        }
     }
 
     //Кнопка для старта игры
@@ -113,7 +135,8 @@ public class Snake : MonoBehaviour
     public void Exit_game()
     {
         Debug.Log("exit");
-        Time.timeScale = 0;
+        Time.timeScale = 1;
+        SceneManager.LoadScene("MainMenu");
     }
 
     private void CheckScore()
