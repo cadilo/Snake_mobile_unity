@@ -1,4 +1,4 @@
-
+using UnityEngine.UI;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
@@ -7,15 +7,16 @@ using UnityEngine.SocialPlatforms.Impl;
 public class MultiPllayerController : MonoBehaviour
 {
     public static Vector2 direction = Vector2.up;
-    public float speed;
     PhotonView view;
     Food food;
     [SerializeField] Transform snake_tail_prefab;
     public static List<Transform> Snake_tail;
+    [SerializeField] GameObject Swipe_Panel;
 
 
     private void Start()
     {
+
         Snake_tail = new List<Transform>();
         view = GetComponent<PhotonView>();
         Snake_tail.Add(this.transform);
@@ -24,43 +25,42 @@ public class MultiPllayerController : MonoBehaviour
     private void Update()
     {
 
-        if (Input.GetKey(KeyCode.W))
+        if (view.IsMine)
         {
-            direction = Vector2.up;
+            if (Input.GetKey(KeyCode.W))
+            {
+                direction = Vector2.up;
+            }
+            else if (Input.GetKey(KeyCode.S))
+            {
+                direction = Vector2.down;
+            }
+            else if (Input.GetKey(KeyCode.A))
+            {
+                direction = Vector2.left;
+            }
+            else if (Input.GetKey(KeyCode.D))
+            {
+                direction = Vector2.right;
+            }
         }
-        else if (Input.GetKey(KeyCode.S))
-        {
-            direction = Vector2.down;
-        }
-        else if (Input.GetKey(KeyCode.A))
-        {
-            direction = Vector2.left;
-        }
-        else if (Input.GetKey(KeyCode.D))
-        {
-            direction = Vector2.right;
-        }
-
 
     }
 
     private void FixedUpdate()
     {
-        if (view.IsMine)
+       if (view.IsMine)
         {
             for (int i = Snake_tail.Count - 1; i > 0; i--)
             {
                 Snake_tail[i].position = Snake_tail[i - 1].position;
             }
-            //Vector2 moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), (Input.GetAxisRaw("Vertical")));
-            //Vector2 moveAmount = Snake.direction.normalized * speed * Time.deltaTime;
-            //transform.position += (Vector3)moveAmount;
             this.transform.position = new Vector3(Mathf.Round(this.transform.position.x) + direction.x, Mathf.Round(this.transform.position.y) + direction.y, 0f);
         }
     }
 
 
-        private bool IsFoodOnTail(int x, int y)
+    private bool IsFoodOnTail(int x, int y)
     {
         for (int i = Snake.Snake_tail.Count - 1; i > 0; i--)
         {

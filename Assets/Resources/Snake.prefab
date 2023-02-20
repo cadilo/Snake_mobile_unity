@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 6539815600617037537}
   m_Layer: 0
   m_Name: Snake
-  m_TagString: snake
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -175,10 +175,10 @@ MonoBehaviour:
     SynchronizeEnabled: 1
     TeleportEnabled: 1
     TeleportIfDistanceGreaterThan: 3
-    InterpolateOption: 2
+    InterpolateOption: 3
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 1
-    ExtrapolateOption: 0
+    ExtrapolateOption: 3
     ExtrapolateSpeed: 1
     ExtrapolateIncludingRoundTripTime: 1
     ExtrapolateNumberOfStoredPositions: 1
@@ -204,5 +204,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2faca2ab29f2ced4bbebcd217b3c43e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
   snake_tail_prefab: {fileID: 8664413910510686697, guid: ef6bb113a000e4b4fa6f33d02192b532, type: 3}
+  Swipe_Panel: {fileID: 0}
