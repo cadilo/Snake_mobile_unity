@@ -151,7 +151,7 @@ public class Snake : MonoBehaviour
 
     private void AddTail()
     {
-        Transform tail = Instantiate(this.snake_tail_prefab);
+        Transform tail = Instantiate(snake_tail_prefab);
         tail.position = Snake_tail[Snake_tail.Count-1].position;
 
         Snake_tail.Add(tail);

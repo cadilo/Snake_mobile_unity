@@ -15,4 +15,9 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene("LoadingScene");
     }
+
+    public void settings_btn_sc()
+    {
+        SceneManager.LoadScene("Settings");
+    }
 }
