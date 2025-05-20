@@ -1,3 +1,3 @@
 # Snake_mobile_unity
 
-УУуууууу
+Online mobile snake game
